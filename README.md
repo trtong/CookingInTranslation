@@ -21,9 +21,3 @@ v1.0 - Initial build.
 ## Authors
 
 * **Trinh Tong** - *Initial work* - [GitHub](https://github.com/trtong)
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc

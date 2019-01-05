@@ -1,0 +1,54 @@
+{
+    "name": "Recipe",
+    "fields": [
+        {
+            "fieldName": "servingSize",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "instructions",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "originalLanguage",
+            "fieldType": "Language",
+            "fieldValues": "ENGLISH,SPANISH,FRENCH,CHINESE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "translations",
+            "otherEntityName": "translatedRecipe",
+            "otherEntityRelationshipName": "translatedRecipe"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "ingredients",
+            "otherEntityName": "ingredient",
+            "otherEntityRelationshipName": "recipe"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "cookbook",
+            "otherEntityName": "cookBook",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "allRecipes"
+        }
+    ],
+    "changelogDate": "20190105184309",
+    "entityTableName": "recipe",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

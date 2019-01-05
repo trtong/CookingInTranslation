@@ -1,0 +1,56 @@
+entity UserDetails {
+	firstName String required minlength(3),
+	lastName String required minlength(3),
+	email String required minlength(3),
+    languagePreference Language
+}
+
+entity CookBook {
+	name String required minlength(3),
+    owner UUID required,
+    description String
+}
+
+entity Recipe {
+    servingSize Integer,
+    instructions String,
+    originalLanguage Language required
+}
+
+entity TranslatedRecipe {
+	recipeId Long required,
+    servingSize Integer,
+    language Language required
+}
+
+entity Ingredient {
+	name String,
+    amount Double,
+    unit String,
+    description String
+}
+
+enum Language {
+	ENGLISH, SPANISH, FRENCH, CHINESE
+}
+
+relationship OneToOne {
+	UserDetails{user(id)} to User,
+}
+
+relationship OneToMany {
+	UserDetails{cookbooks} to CookBook,
+    Recipe to TranslatedRecipe,
+}
+
+relationship ManyToOne {
+    CookBook{userDetails(id)} to UserDetails,
+}
+
+relationship ManyToMany {
+	Recipe to UserDetails,
+    CookBook to Recipe{recipes(id)},
+}
+
+
+

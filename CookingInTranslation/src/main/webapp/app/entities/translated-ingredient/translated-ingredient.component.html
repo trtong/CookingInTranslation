@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span>Translated Ingredients</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-translated-ingredient" [routerLink]="['/translated-ingredient/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Translated Ingredient
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="translatedIngredients">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Name</span></th>
+            <th><span>Language</span></th>
+            <th><span>Amount</span></th>
+            <th><span>Unit</span></th>
+            <th><span>Description</span></th>
+            <th><span>Translated Recipe</span></th>
+            <th><span>Ingredient</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let translatedIngredient of translatedIngredients ;trackBy: trackId">
+                <td><a [routerLink]="['/translated-ingredient', translatedIngredient.id, 'view' ]">{{translatedIngredient.id}}</a></td>
+                <td>{{translatedIngredient.name}}</td>
+                <td>{{translatedIngredient.language}}</td>
+                <td>{{translatedIngredient.amount}}</td>
+                <td>{{translatedIngredient.unit}}</td>
+                <td>{{translatedIngredient.description}}</td>
+                <td>
+                    <div *ngIf="translatedIngredient.translatedRecipe">
+                        <a [routerLink]="['../translated-recipe', translatedIngredient.translatedRecipe?.id, 'view' ]" >{{translatedIngredient.translatedRecipe?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="translatedIngredient.ingredient">
+                        <a [routerLink]="['../ingredient', translatedIngredient.ingredient?.id, 'view' ]" >{{translatedIngredient.ingredient?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/translated-ingredient', translatedIngredient.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/translated-ingredient', translatedIngredient.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'translated-ingredient/'+ translatedIngredient.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

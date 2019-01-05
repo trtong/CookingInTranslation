@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "CookingInTranslation",
+    "packageName": "io.trtong",
+    "packageFolder": "io/trtong",
+    "serverPort": 8080,
+    "serviceDiscoveryType": "eureka",
+    "authenticationType": "jwt",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "enableSwaggerCodegen": false,
+    "messageBroker": false,
+    "buildTool": "maven",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [
+      "cucumber",
+      "protractor"
+    ],
+    "enableTranslation": false,
+    "nativeLanguage": "en",
+    "languages": [
+      "en"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "5.7.2",
+    "jwtSecretKey": "NTBiN2EwMjczOTQ5MTAyZmZlMTMyMDE5NDRlNGRjYWU4NmQ3ZDAzMDM2ZjQyNjk3NThjYTM0NjJlYmU3MjNhNThmZjVkNzBhZTJjMmJkYjJhYTdhZTM5NjM5Mjk0NmFmYTMzODA4ODBkNjkyNDNhMDk0MzcyOWVmNTQ1NTQ2YWI=",
+    "otherModules": []
+  }
+}

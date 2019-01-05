@@ -7,7 +7,6 @@ entity UserDetails {
 
 entity CookBook {
 	name String required minlength(3),
-    owner UUID required,
     description String
 }
 
@@ -39,17 +38,13 @@ relationship OneToOne {
 }
 
 relationship OneToMany {
-	UserDetails{cookbooks} to CookBook,
-    Recipe to TranslatedRecipe,
-}
-
-relationship ManyToOne {
-    CookBook{userDetails(id)} to UserDetails,
+	UserDetails{cookbooks} to CookBook{userDetails(id)},
+    Recipe{translations} to TranslatedRecipe,
 }
 
 relationship ManyToMany {
 	Recipe to UserDetails,
-    CookBook to Recipe{recipes(id)},
+    CookBook{recipes} to Recipe{recipes(id)},
 }
 
 

@@ -1,0 +1,116 @@
+import { element, by, ElementFinder } from 'protractor';
+
+export class CookBookComponentsPage {
+    createButton = element(by.id('jh-create-entity'));
+    deleteButtons = element.all(by.css('jhi-cook-book div table .btn-danger'));
+    title = element.all(by.css('jhi-cook-book div h2#page-heading span')).first();
+
+    async clickOnCreateButton() {
+        await this.createButton.click();
+    }
+
+    async clickOnLastDeleteButton() {
+        await this.deleteButtons.last().click();
+    }
+
+    async countDeleteButtons() {
+        return this.deleteButtons.count();
+    }
+
+    async getTitle() {
+        return this.title.getText();
+    }
+}
+
+export class CookBookUpdatePage {
+    pageTitle = element(by.id('jhi-cook-book-heading'));
+    saveButton = element(by.id('save-entity'));
+    cancelButton = element(by.id('cancel-save'));
+    nameInput = element(by.id('field_name'));
+    descriptionInput = element(by.id('field_description'));
+    recipesSelect = element(by.id('field_recipes'));
+    userDetailsSelect = element(by.id('field_userDetails'));
+
+    async getPageTitle() {
+        return this.pageTitle.getText();
+    }
+
+    async setNameInput(name) {
+        await this.nameInput.sendKeys(name);
+    }
+
+    async getNameInput() {
+        return this.nameInput.getAttribute('value');
+    }
+
+    async setDescriptionInput(description) {
+        await this.descriptionInput.sendKeys(description);
+    }
+
+    async getDescriptionInput() {
+        return this.descriptionInput.getAttribute('value');
+    }
+
+    async recipesSelectLastOption() {
+        await this.recipesSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    async recipesSelectOption(option) {
+        await this.recipesSelect.sendKeys(option);
+    }
+
+    getRecipesSelect(): ElementFinder {
+        return this.recipesSelect;
+    }
+
+    async getRecipesSelectedOption() {
+        return this.recipesSelect.element(by.css('option:checked')).getText();
+    }
+
+    async userDetailsSelectLastOption() {
+        await this.userDetailsSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    async userDetailsSelectOption(option) {
+        await this.userDetailsSelect.sendKeys(option);
+    }
+
+    getUserDetailsSelect(): ElementFinder {
+        return this.userDetailsSelect;
+    }
+
+    async getUserDetailsSelectedOption() {
+        return this.userDetailsSelect.element(by.css('option:checked')).getText();
+    }
+
+    async save() {
+        await this.saveButton.click();
+    }
+
+    async cancel() {
+        await this.cancelButton.click();
+    }
+
+    getSaveButton(): ElementFinder {
+        return this.saveButton;
+    }
+}
+
+export class CookBookDeleteDialog {
+    private dialogTitle = element(by.id('jhi-delete-cookBook-heading'));
+    private confirmButton = element(by.id('jhi-confirm-delete-cookBook'));
+
+    async getDialogTitle() {
+        return this.dialogTitle.getText();
+    }
+
+    async clickOnConfirmButton() {
+        await this.confirmButton.click();
+    }
+}

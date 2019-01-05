@@ -5,6 +5,15 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190105165650_added_entity_UserDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190105165651_added_entity_CookBook.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190105165652_added_entity_Recipe.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190105165653_added_entity_TranslatedRecipe.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190105165654_added_entity_Ingredient.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20190105165650_added_entity_constraints_UserDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190105165651_added_entity_constraints_CookBook.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190105165652_added_entity_constraints_Recipe.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190105165653_added_entity_constraints_TranslatedRecipe.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

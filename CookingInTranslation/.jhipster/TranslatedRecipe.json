@@ -1,0 +1,41 @@
+{
+    "name": "TranslatedRecipe",
+    "fields": [
+        {
+            "fieldName": "recipeId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "servingSize",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "language",
+            "fieldType": "Language",
+            "fieldValues": "ENGLISH,SPANISH,FRENCH,CHINESE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "recipe",
+            "otherEntityName": "recipe",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190105165653",
+    "entityTableName": "translated_recipe",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

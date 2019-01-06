@@ -13,6 +13,7 @@ export const enum Language {
 export interface IRecipe {
     id?: number;
     servingSize?: number;
+    name?: string;
     instructions?: string;
     originalLanguage?: Language;
     translations?: ITranslatedRecipe[];
@@ -25,6 +26,7 @@ export class Recipe implements IRecipe {
     constructor(
         public id?: number,
         public servingSize?: number,
+        public name?: string,
         public instructions?: string,
         public originalLanguage?: Language,
         public translations?: ITranslatedRecipe[],

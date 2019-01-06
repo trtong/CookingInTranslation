@@ -6,6 +6,10 @@
             "fieldType": "Integer"
         },
         {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "instructions",
             "fieldType": "String"
         },

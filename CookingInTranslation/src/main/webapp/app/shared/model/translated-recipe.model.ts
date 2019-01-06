@@ -12,6 +12,7 @@ export const enum Language {
 export interface ITranslatedRecipe {
     id?: number;
     servingSize?: number;
+    name?: string;
     instructions?: string;
     language?: Language;
     recipe?: IRecipe;
@@ -23,6 +24,7 @@ export class TranslatedRecipe implements ITranslatedRecipe {
     constructor(
         public id?: number,
         public servingSize?: number,
+        public name?: string,
         public instructions?: string,
         public language?: Language,
         public recipe?: IRecipe,

@@ -17,5 +17,6 @@
     <include file="config/liquibase/changelog/20190105232419_added_entity_constraints_Recipe.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190105232420_added_entity_constraints_TranslatedRecipe.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190105232422_added_entity_constraints_TranslatedIngredient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201901051923_update_tables.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

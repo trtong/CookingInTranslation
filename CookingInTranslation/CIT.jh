@@ -12,12 +12,14 @@ entity CookBook {
 
 entity Recipe {
     servingSize Integer,
+    name String,
     instructions String,
     originalLanguage Language required
 }
 
 entity TranslatedRecipe {
     servingSize Integer,
+    name String,
     instructions String,
     language Language required
 }

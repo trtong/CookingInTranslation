@@ -21,7 +21,7 @@ describe('Service Tests', () => {
             service = injector.get(RecipeService);
             httpMock = injector.get(HttpTestingController);
 
-            elemDefault = new Recipe(0, 0, 'AAAAAAA', Language.ENGLISH);
+            elemDefault = new Recipe(0, 0, 'AAAAAAA', 'AAAAAAA', Language.ENGLISH);
         });
 
         describe('Service methods', async () => {
@@ -56,6 +56,7 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         servingSize: 1,
+                        name: 'BBBBBB',
                         instructions: 'BBBBBB',
                         originalLanguage: 'BBBBBB'
                     },
@@ -75,6 +76,7 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         servingSize: 1,
+                        name: 'BBBBBB',
                         instructions: 'BBBBBB',
                         originalLanguage: 'BBBBBB'
                     },

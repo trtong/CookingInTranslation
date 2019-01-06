@@ -31,6 +31,9 @@ public class Recipe implements Serializable {
     @Column(name = "serving_size")
     private Integer servingSize;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "instructions")
     private String instructions;
 
@@ -81,6 +84,19 @@ public class Recipe implements Serializable {
 
     public void setServingSize(Integer servingSize) {
         this.servingSize = servingSize;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Recipe name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getInstructions() {
@@ -235,6 +251,7 @@ public class Recipe implements Serializable {
         return "Recipe{" +
             "id=" + getId() +
             ", servingSize=" + getServingSize() +
+            ", name='" + getName() + "'" +
             ", instructions='" + getInstructions() + "'" +
             ", originalLanguage='" + getOriginalLanguage() + "'" +
             "}";

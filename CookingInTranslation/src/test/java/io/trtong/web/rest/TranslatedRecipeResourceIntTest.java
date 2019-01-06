@@ -44,6 +44,9 @@ public class TranslatedRecipeResourceIntTest {
     private static final Integer DEFAULT_SERVING_SIZE = 1;
     private static final Integer UPDATED_SERVING_SIZE = 2;
 
+    private static final String DEFAULT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_NAME = "BBBBBBBBBB";
+
     private static final String DEFAULT_INSTRUCTIONS = "AAAAAAAAAA";
     private static final String UPDATED_INSTRUCTIONS = "BBBBBBBBBB";
 
@@ -93,6 +96,7 @@ public class TranslatedRecipeResourceIntTest {
     public static TranslatedRecipe createEntity(EntityManager em) {
         TranslatedRecipe translatedRecipe = new TranslatedRecipe()
             .servingSize(DEFAULT_SERVING_SIZE)
+            .name(DEFAULT_NAME)
             .instructions(DEFAULT_INSTRUCTIONS)
             .language(DEFAULT_LANGUAGE);
         return translatedRecipe;
@@ -119,6 +123,7 @@ public class TranslatedRecipeResourceIntTest {
         assertThat(translatedRecipeList).hasSize(databaseSizeBeforeCreate + 1);
         TranslatedRecipe testTranslatedRecipe = translatedRecipeList.get(translatedRecipeList.size() - 1);
         assertThat(testTranslatedRecipe.getServingSize()).isEqualTo(DEFAULT_SERVING_SIZE);
+        assertThat(testTranslatedRecipe.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testTranslatedRecipe.getInstructions()).isEqualTo(DEFAULT_INSTRUCTIONS);
         assertThat(testTranslatedRecipe.getLanguage()).isEqualTo(DEFAULT_LANGUAGE);
     }
@@ -172,6 +177,7 @@ public class TranslatedRecipeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(translatedRecipe.getId().intValue())))
             .andExpect(jsonPath("$.[*].servingSize").value(hasItem(DEFAULT_SERVING_SIZE)))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].instructions").value(hasItem(DEFAULT_INSTRUCTIONS.toString())))
             .andExpect(jsonPath("$.[*].language").value(hasItem(DEFAULT_LANGUAGE.toString())));
     }
@@ -188,6 +194,7 @@ public class TranslatedRecipeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(translatedRecipe.getId().intValue()))
             .andExpect(jsonPath("$.servingSize").value(DEFAULT_SERVING_SIZE))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.instructions").value(DEFAULT_INSTRUCTIONS.toString()))
             .andExpect(jsonPath("$.language").value(DEFAULT_LANGUAGE.toString()));
     }
@@ -214,6 +221,7 @@ public class TranslatedRecipeResourceIntTest {
         em.detach(updatedTranslatedRecipe);
         updatedTranslatedRecipe
             .servingSize(UPDATED_SERVING_SIZE)
+            .name(UPDATED_NAME)
             .instructions(UPDATED_INSTRUCTIONS)
             .language(UPDATED_LANGUAGE);
 
@@ -227,6 +235,7 @@ public class TranslatedRecipeResourceIntTest {
         assertThat(translatedRecipeList).hasSize(databaseSizeBeforeUpdate);
         TranslatedRecipe testTranslatedRecipe = translatedRecipeList.get(translatedRecipeList.size() - 1);
         assertThat(testTranslatedRecipe.getServingSize()).isEqualTo(UPDATED_SERVING_SIZE);
+        assertThat(testTranslatedRecipe.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testTranslatedRecipe.getInstructions()).isEqualTo(UPDATED_INSTRUCTIONS);
         assertThat(testTranslatedRecipe.getLanguage()).isEqualTo(UPDATED_LANGUAGE);
     }

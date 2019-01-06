@@ -40,12 +40,14 @@ describe('Recipe e2e test', () => {
         await recipeComponentsPage.clickOnCreateButton();
         await promise.all([
             recipeUpdatePage.setServingSizeInput('5'),
+            recipeUpdatePage.setNameInput('name'),
             recipeUpdatePage.setInstructionsInput('instructions'),
             recipeUpdatePage.originalLanguageSelectLastOption()
             // recipeUpdatePage.userDetailsSelectLastOption(),
             // recipeUpdatePage.ingredientSelectLastOption(),
         ]);
         expect(await recipeUpdatePage.getServingSizeInput()).to.eq('5');
+        expect(await recipeUpdatePage.getNameInput()).to.eq('name');
         expect(await recipeUpdatePage.getInstructionsInput()).to.eq('instructions');
         await recipeUpdatePage.save();
         expect(await recipeUpdatePage.getSaveButton().isPresent()).to.be.false;

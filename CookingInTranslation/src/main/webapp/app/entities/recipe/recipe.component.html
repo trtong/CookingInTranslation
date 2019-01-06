@@ -16,6 +16,7 @@
             <tr>
             <th><span>ID</span></th>
             <th><span>Serving Size</span></th>
+            <th><span>Name</span></th>
             <th><span>Instructions</span></th>
             <th><span>Original Language</span></th>
             <th><span>User Details</span></th>
@@ -27,6 +28,7 @@
             <tr *ngFor="let recipe of recipes ;trackBy: trackId">
                 <td><a [routerLink]="['/recipe', recipe.id, 'view' ]">{{recipe.id}}</a></td>
                 <td>{{recipe.servingSize}}</td>
+                <td>{{recipe.name}}</td>
                 <td>{{recipe.instructions}}</td>
                 <td>{{recipe.originalLanguage}}</td>
                 <td>

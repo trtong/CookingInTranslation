@@ -27,6 +27,7 @@ export class RecipeUpdatePage {
     saveButton = element(by.id('save-entity'));
     cancelButton = element(by.id('cancel-save'));
     servingSizeInput = element(by.id('field_servingSize'));
+    nameInput = element(by.id('field_name'));
     instructionsInput = element(by.id('field_instructions'));
     originalLanguageSelect = element(by.id('field_originalLanguage'));
     userDetailsSelect = element(by.id('field_userDetails'));
@@ -42,6 +43,14 @@ export class RecipeUpdatePage {
 
     async getServingSizeInput() {
         return this.servingSizeInput.getAttribute('value');
+    }
+
+    async setNameInput(name) {
+        await this.nameInput.sendKeys(name);
+    }
+
+    async getNameInput() {
+        return this.nameInput.getAttribute('value');
     }
 
     async setInstructionsInput(instructions) {

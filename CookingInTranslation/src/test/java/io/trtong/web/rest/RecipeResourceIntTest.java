@@ -49,6 +49,9 @@ public class RecipeResourceIntTest {
     private static final Integer DEFAULT_SERVING_SIZE = 1;
     private static final Integer UPDATED_SERVING_SIZE = 2;
 
+    private static final String DEFAULT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_NAME = "BBBBBBBBBB";
+
     private static final String DEFAULT_INSTRUCTIONS = "AAAAAAAAAA";
     private static final String UPDATED_INSTRUCTIONS = "BBBBBBBBBB";
 
@@ -101,6 +104,7 @@ public class RecipeResourceIntTest {
     public static Recipe createEntity(EntityManager em) {
         Recipe recipe = new Recipe()
             .servingSize(DEFAULT_SERVING_SIZE)
+            .name(DEFAULT_NAME)
             .instructions(DEFAULT_INSTRUCTIONS)
             .originalLanguage(DEFAULT_ORIGINAL_LANGUAGE);
         return recipe;
@@ -127,6 +131,7 @@ public class RecipeResourceIntTest {
         assertThat(recipeList).hasSize(databaseSizeBeforeCreate + 1);
         Recipe testRecipe = recipeList.get(recipeList.size() - 1);
         assertThat(testRecipe.getServingSize()).isEqualTo(DEFAULT_SERVING_SIZE);
+        assertThat(testRecipe.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testRecipe.getInstructions()).isEqualTo(DEFAULT_INSTRUCTIONS);
         assertThat(testRecipe.getOriginalLanguage()).isEqualTo(DEFAULT_ORIGINAL_LANGUAGE);
     }
@@ -180,6 +185,7 @@ public class RecipeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(recipe.getId().intValue())))
             .andExpect(jsonPath("$.[*].servingSize").value(hasItem(DEFAULT_SERVING_SIZE)))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].instructions").value(hasItem(DEFAULT_INSTRUCTIONS.toString())))
             .andExpect(jsonPath("$.[*].originalLanguage").value(hasItem(DEFAULT_ORIGINAL_LANGUAGE.toString())));
     }
@@ -229,6 +235,7 @@ public class RecipeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(recipe.getId().intValue()))
             .andExpect(jsonPath("$.servingSize").value(DEFAULT_SERVING_SIZE))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.instructions").value(DEFAULT_INSTRUCTIONS.toString()))
             .andExpect(jsonPath("$.originalLanguage").value(DEFAULT_ORIGINAL_LANGUAGE.toString()));
     }
@@ -255,6 +262,7 @@ public class RecipeResourceIntTest {
         em.detach(updatedRecipe);
         updatedRecipe
             .servingSize(UPDATED_SERVING_SIZE)
+            .name(UPDATED_NAME)
             .instructions(UPDATED_INSTRUCTIONS)
             .originalLanguage(UPDATED_ORIGINAL_LANGUAGE);
 
@@ -268,6 +276,7 @@ public class RecipeResourceIntTest {
         assertThat(recipeList).hasSize(databaseSizeBeforeUpdate);
         Recipe testRecipe = recipeList.get(recipeList.size() - 1);
         assertThat(testRecipe.getServingSize()).isEqualTo(UPDATED_SERVING_SIZE);
+        assertThat(testRecipe.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testRecipe.getInstructions()).isEqualTo(UPDATED_INSTRUCTIONS);
         assertThat(testRecipe.getOriginalLanguage()).isEqualTo(UPDATED_ORIGINAL_LANGUAGE);
     }
